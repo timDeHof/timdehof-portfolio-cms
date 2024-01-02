@@ -1,0 +1,66 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "free",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"title",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "real",
+							"type": "Text"
+						}
+					],
+					[
+						"start_date",
+						{
+							"__TYPE__": "FieldContent",
+							"type": "Timestamp",
+							"value": "2023-02-04T15:00:37Z"
+						}
+					],
+					[
+						"end_date",
+						{
+							"__TYPE__": "FieldContent",
+							"type": "Timestamp",
+							"value": "2021-11-20T03:02:28Z"
+						}
+					],
+					[
+						"institution",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "due",
+							"type": "Text"
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Exercitation labore id consectetur qui consequat duis aliquip officia ipsum. Labore amet consequat reprehenderit dolor proident ea velit aute ad Lorem."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
+]
