@@ -86,6 +86,13 @@
                 "constraint": {},
                 "thumbnails": []
               }
+            },
+            "bgcolor": {
+              "type": "Color",
+              "config": {
+                "label": "BGColor",
+                "placeholder": ""
+              }
             }
           }
         }

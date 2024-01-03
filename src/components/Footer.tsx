@@ -4,12 +4,15 @@ import { createClient } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import Bounded from "@/components/Bounded";
-import { Content, LinkField, isFilled } from "@prismicio/client";
+import { ColorField, Content, isFilled } from "@prismicio/client";
+import link from "next/link";
+import { color, label } from "three/examples/jsm/nodes/Nodes.js";
 
 type socialLinkProps = {
   link: Content.SettingsDocumentDataSocialLinksItem["link"];
   icon: Content.SettingsDocumentDataSocialLinksItem["icon"];
   label: Content.SettingsDocumentDataSocialLinksItem["label"];
+  bgcolor: ColorField;
 };
 
 export default async function Footer() {
@@ -60,11 +63,17 @@ export default async function Footer() {
         </nav>
         <div className='socials inline-flex justify-center gap-2 sm:justify-end'>
           {settings.data.social_links.map(
-            ({ link, icon, label }: socialLinkProps, index) => (
-              <span key={index}>
+            ({ link, icon, label, bgcolor }: socialLinkProps, index) => (
+              <span
+                key={index}
+                className='p-2 flex items-center justify-center rounded-full w-10 h-10 duration-150 hover:scale-125'
+                style={{
+                  backgroundColor: isFilled.color(bgcolor)
+                    ? bgcolor
+                    : "inherit",
+                }}>
                 <PrismicNextLink
                   field={link}
-                  className='p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400'
                   aria-label={settings.data.name + " on " + label}>
                   <PrismicNextImage field={icon} className='h-8 w-auto' />
                 </PrismicNextLink>

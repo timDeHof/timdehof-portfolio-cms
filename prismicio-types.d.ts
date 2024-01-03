@@ -388,6 +388,16 @@ export interface SettingsDocumentDataSocialLinksItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   icon: prismic.ImageField<never>;
+
+  /**
+   * BGColor field in *Settings → Social Links*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.social_links[].bgcolor
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  bgcolor: prismic.ColorField;
 }
 
 /**
