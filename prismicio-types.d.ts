@@ -232,6 +232,31 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+/**
+ * Item in *Project → Links*
+ */
+export interface ProjectDocumentDataLinksItem {
+  /**
+   * Link field in *Project → Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Label field in *Project → Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.links[].label
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  label: prismic.KeyTextField;
+}
+
 type ProjectDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
 
 /**
@@ -270,6 +295,17 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   hover_image: prismic.ImageField<never>;
+
+  /**
+   * Links field in *Project*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links: prismic.GroupField<Simplify<ProjectDocumentDataLinksItem>>;
 
   /**
    * Slice Zone field in *Project*
@@ -1040,6 +1076,7 @@ declare module "@prismicio/client" {
       PageDocumentDataSlicesSlice,
       ProjectDocument,
       ProjectDocumentData,
+      ProjectDocumentDataLinksItem,
       ProjectDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
