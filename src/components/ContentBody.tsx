@@ -4,7 +4,7 @@ import { components } from "@/slices";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
 import Button from "@/components/Button";
-import { Content, DateField, asLinkAttrs, isFilled } from "@prismicio/client";
+import { Content, DateField, isFilled } from "@prismicio/client";
 
 type Page = { uid: string };
 
@@ -44,7 +44,7 @@ export default function ContentBody({
           ))}
         </div>
         <div className="flex items-center gap-4">
-          {links.map((link) => (
+          {links.map((link: Links) => (
             <Button
               key={link.label}
               linkField={link.link}
