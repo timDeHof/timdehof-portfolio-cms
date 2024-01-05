@@ -4,7 +4,7 @@ import { components } from "@/slices";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
 import Button from "@/components/Button";
-import { Content, DateField, isFilled } from "@prismicio/client";
+import { Content, DateField, asLinkAttrs, isFilled } from "@prismicio/client";
 
 type Page = { uid: string };
 
@@ -15,8 +15,10 @@ type Links = {
 
 export default function ContentBody({
   page,
+  links,
 }: {
   page: Content.BlogPostDocument | Content.ProjectDocument;
+  links: Links[];
 }) {
   function formatDate(date: DateField) {
     if (isFilled.date(date)) {
@@ -42,7 +44,7 @@ export default function ContentBody({
           ))}
         </div>
         <div className="flex items-center gap-4">
-          {page.data.links.map((link) => (
+          {links.map((link) => (
             <Button
               key={link.label}
               linkField={link.link}
