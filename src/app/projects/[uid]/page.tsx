@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: Params }) {
     .getByUID("project", params.uid)
     .catch(() => notFound());
 
-  const links = page.data.links;
+  const links = page.data.links || null;
 
   return <ContentBody page={page} links={links} />;
 }
