@@ -4,21 +4,17 @@ import { components } from "@/slices";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
 import Button from "@/components/Button";
-import { Content, DateField, isFilled } from "@prismicio/client";
+import { Content, DateField, GroupField, isFilled } from "@prismicio/client";
+import { Simplify } from "../../prismicio-types";
 
 type Page = { uid: string };
-
-type Links = {
-  link: Content.ProjectDocumentDataLinksItem["link"];
-  label: Content.ProjectDocumentDataLinksItem["label"];
-};
 
 export default function ContentBody({
   page,
   links,
 }: {
   page: Content.BlogPostDocument | Content.ProjectDocument;
-  links: Links[];
+  links?: GroupField<Simplify<Content.ProjectDocumentDataLinksItem>>;
 }) {
   function formatDate(date: DateField) {
     if (isFilled.date(date)) {
@@ -44,14 +40,16 @@ export default function ContentBody({
           ))}
         </div>
         <div className="flex items-center gap-4">
-          {links.map((link: Links) => (
-            <Button
-              key={link.label}
-              linkField={link.link}
-              label={link.label}
-              className="mt-8"
-            />
-          ))}
+          {isFilled.group(links)
+            ? links.map((link) => (
+                <Button
+                  key={link.label}
+                  linkField={link.link}
+                  label={link.label}
+                  className="mt-8"
+                />
+              ))
+            : ""}
         </div>
         <p className="mt-8 border-b border-slate-600 text-xl font-medium text-slate-300">
           {formatDate(page.data.date)}
