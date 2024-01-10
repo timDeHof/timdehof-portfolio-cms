@@ -7,7 +7,11 @@ import clsx from "clsx";
 import { PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
 
-const urbanist = Urbanist({ subsets: ["latin"] });
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  variable: "--font-urbanist",
+  display: "swap",
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
@@ -26,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-slate-900 text-slate-100">
-      <body className={clsx(urbanist.className, "relative min-h-screen")}>
+      <body className={clsx(urbanist.variable, "relative min-h-screen")}>
         <Header />
         {children}
         <Footer />

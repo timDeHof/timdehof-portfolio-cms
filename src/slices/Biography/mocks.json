@@ -4,9 +4,15 @@
 		"variation": "default",
 		"primary": {
 			"heading": {
-				"__TYPE__": "FieldContent",
-				"value": "figure",
-				"type": "Text"
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Grown"
+						}
+					}
+				]
 			},
 			"description": {
 				"__TYPE__": "StructuredTextContent",
@@ -14,7 +20,7 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Nostrud irure elit consequat amet non eu."
+							"text": "Et excepteur voluptate sunt nostrud consectetur do minim ex nisi cupidatat laborum. Excepteur ut officia nostrud. Tempor dolore sit eu dolor est ipsum."
 						}
 					}
 				]
