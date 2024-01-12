@@ -1,0 +1,39 @@
+{
+  "id": "tech_stack",
+  "type": "SharedSlice",
+  "name": "TechStack",
+  "description": "TechStack",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
+          }
+        }
+      },
+      "items": {
+        "technologies": {
+          "type": "Link",
+          "config": {
+            "label": "Technologies",
+            "select": "document",
+            "customtypes": [
+              "technology"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
