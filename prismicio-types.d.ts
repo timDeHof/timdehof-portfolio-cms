@@ -168,6 +168,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | TechStackSlice
   | ExperienceSlice
   | ContentIndexSlice
   | TechListSlice
@@ -556,12 +557,119 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *technology → Technologies*
+ */
+export interface TechnologyDocumentDataTechnologiesItem {
+  /**
+   * Icon field in *technology → Technologies*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: technology.technologies[].icon
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  icon: prismic.SelectField<
+    | "Nextjs"
+    | "Reactjs"
+    | "TypeScript"
+    | "JavaScript"
+    | "HTML5"
+    | "CSS3"
+    | "Tailwind"
+    | "Postgres"
+    | "Express"
+    | "Nodejs"
+    | "ReactQuery"
+    | "Redux"
+    | "Webpack"
+    | "ESLint"
+    | "Prettier"
+    | "NPM"
+    | "Vercel"
+    | "Firebase"
+    | "Git"
+    | "Prisma"
+    | "Prismic"
+    | "AppwriteIo"
+    | "FramerMotion"
+    | "Jotai"
+  >;
+
+  /**
+   * Name field in *technology → Technologies*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: technology.technologies[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+}
+
+/**
+ * Content for technology documents
+ */
+interface TechnologyDocumentData {
+  /**
+   * Field field in *technology*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: technology.field
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  field: prismic.TitleField;
+
+  /**
+   * SubHeading field in *technology*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: technology.subheading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  subheading: prismic.RichTextField;
+
+  /**
+   * Technologies field in *technology*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: technology.technologies[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  technologies: prismic.GroupField<
+    Simplify<TechnologyDocumentDataTechnologiesItem>
+  >;
+}
+
+/**
+ * technology document from Prismic
+ *
+ * - **API ID**: `technology`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TechnologyDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<TechnologyDocumentData>,
+    "technology",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | BlogPostDocument
   | HomepageDocument
   | PageDocument
   | ProjectDocument
-  | SettingsDocument;
+  | SettingsDocument
+  | TechnologyDocument;
 
 /**
  * Primary content in *Biography → Primary*
@@ -924,9 +1032,37 @@ export type ImageBlockSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ImageBlock → Primary*
+ */
+export interface ImageBlockSliceBannerPrimary {
+  /**
+   * Image field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Banner variation for ImageBlock Slice
+ *
+ * - **API ID**: `banner`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageBlockSliceBanner = prismic.SharedSliceVariation<
+  "banner",
+  Simplify<ImageBlockSliceBannerPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ImageBlock*
  */
-type ImageBlockSliceVariation = ImageBlockSliceDefault;
+type ImageBlockSliceVariation = ImageBlockSliceDefault | ImageBlockSliceBanner;
 
 /**
  * ImageBlock Shared Slice
@@ -1011,6 +1147,66 @@ export type TechListSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *TechStack → Primary*
+ */
+export interface TechStackSliceDefaultPrimary {
+  /**
+   * Heading field in *TechStack → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+}
+
+/**
+ * Primary content in *TechStack → Items*
+ */
+export interface TechStackSliceDefaultItem {
+  /**
+   * Technologies field in *TechStack → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_stack.items[].technologies
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  technologies: prismic.ContentRelationshipField<"technology">;
+}
+
+/**
+ * Default variation for TechStack Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechStackSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TechStackSliceDefaultPrimary>,
+  Simplify<TechStackSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *TechStack*
+ */
+type TechStackSliceVariation = TechStackSliceDefault;
+
+/**
+ * TechStack Shared Slice
+ *
+ * - **API ID**: `tech_stack`
+ * - **Description**: TechStack
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TechStackSlice = prismic.SharedSlice<
+  "tech_stack",
+  TechStackSliceVariation
+>;
+
+/**
  * Primary content in *TextBlock → Primary*
  */
 export interface TextBlockSliceDefaultPrimary {
@@ -1082,6 +1278,9 @@ declare module "@prismicio/client" {
       SettingsDocumentData,
       SettingsDocumentDataNavItemItem,
       SettingsDocumentDataSocialLinksItem,
+      TechnologyDocument,
+      TechnologyDocumentData,
+      TechnologyDocumentDataTechnologiesItem,
       AllDocumentTypes,
       BiographySlice,
       BiographySliceDefaultPrimary,
@@ -1102,13 +1301,20 @@ declare module "@prismicio/client" {
       HeroSliceDefault,
       ImageBlockSlice,
       ImageBlockSliceDefaultPrimary,
+      ImageBlockSliceBannerPrimary,
       ImageBlockSliceVariation,
       ImageBlockSliceDefault,
+      ImageBlockSliceBanner,
       TechListSlice,
       TechListSliceDefaultPrimary,
       TechListSliceDefaultItem,
       TechListSliceVariation,
       TechListSliceDefault,
+      TechStackSlice,
+      TechStackSliceDefaultPrimary,
+      TechStackSliceDefaultItem,
+      TechStackSliceVariation,
+      TechStackSliceDefault,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceVariation,
