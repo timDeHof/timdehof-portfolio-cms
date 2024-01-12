@@ -14,12 +14,16 @@ const components: JSXMapSerializer = {
     </Heading>
   ),
   heading3: ({ children }) => (
-    <Heading as="h3" size="sm" className="font-display font-medium md:mb-3">
+    <Heading
+      as="h3"
+      size="sm"
+      className="font-display font-medium text-slate-300 md:mb-3"
+    >
       {children}
     </Heading>
   ),
   paragraph: ({ children }) => (
-    <p className="font-body mb-4 text-2xl font-normal leading-10 text-slate-200 md:mb-8">
+    <p className="font-body mb-4 max-w-5xl text-2xl font-normal leading-10 text-slate-200 md:mb-8">
       {children}
     </p>
   ),

@@ -1,0 +1,83 @@
+{
+  "id": "technology",
+  "label": "technology",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "field": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Field",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading3"
+        }
+      },
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "subheading": {
+        "type": "StructuredText",
+        "config": {
+          "label": "SubHeading",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph"
+        }
+      },
+      "technologies": {
+        "type": "Group",
+        "config": {
+          "label": "Technologies",
+          "fields": {
+            "icon": {
+              "type": "Select",
+              "config": {
+                "label": "Icon",
+                "placeholder": "",
+                "options": [
+                  "Nextjs",
+                  "Reactjs",
+                  "TypeScript",
+                  "JavaScript",
+                  "HTML5",
+                  "CSS3",
+                  "Tailwind",
+                  "Postgres",
+                  "Express",
+                  "Nodejs",
+                  "ReactQuery",
+                  "Redux",
+                  "Webpack",
+                  "ESLint",
+                  "Prettier",
+                  "NPM",
+                  "Vercel",
+                  "Firebase",
+                  "Git",
+                  "Prisma",
+                  "Prismic",
+                  "AppwriteIo",
+                  "FramerMotion",
+                  "Jotai"
+                ]
+              }
+            },
+            "name": {
+              "type": "Text",
+              "config": {
+                "label": "Name",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
