@@ -14,14 +14,14 @@ const components: JSXMapSerializer = {
     <Heading
       as="h2"
       size="xl"
-      className="font-display col-start-1 text-slate-300"
+      className="col-start-1 font-display text-slate-300"
     >
       {children}
     </Heading>
   ),
 
   paragraph: ({ children }) => (
-    <p className="font-body mb-4 text-2xl font-normal leading-10 text-slate-200 md:mb-8">
+    <p className="mb-4 max-w-2xl font-body text-xl font-normal leading-10 text-slate-200 md:mb-8">
       {children}
     </p>
   ),
@@ -60,7 +60,7 @@ const Biography = ({ slice }: BiographyProps): JSX.Element => {
 
         <Avatar
           image={slice.primary.avatar}
-          className="row-start-1 max-w-sm md:col-start-2 md:row-end-3"
+          className="row-start-2 max-w-sm md:col-start-2 md:row-end-3"
         />
       </div>
     </Bounded>
