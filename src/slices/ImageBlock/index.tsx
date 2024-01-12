@@ -12,10 +12,20 @@ export type ImageBlockProps = SliceComponentProps<Content.ImageBlockSlice>;
  */
 const ImageBlock = ({ slice }: ImageBlockProps): JSX.Element => {
   return (
-    <PrismicNextImage
-      field={slice.primary.image}
-      imgixParams={{ w: 600, h: 400, q: 90 }}
-    />
+    <>
+      {slice.variation === "default" && (
+        <PrismicNextImage
+          field={slice.primary.image}
+          imgixParams={{ w: 600, h: 400, q: 90 }}
+        />
+      )}
+      {slice.variation === "banner" && (
+        <PrismicNextImage
+          field={slice.primary.image}
+          imgixParams={{ w: 600, h: 200, q: 90, fit: "crop", ar: "16:9" }}
+        />
+      )}
+    </>
   );
 };
 
