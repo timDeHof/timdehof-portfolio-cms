@@ -17,12 +17,14 @@ const ImageBlock = ({ slice }: ImageBlockProps): JSX.Element => {
         <PrismicNextImage
           field={slice.primary.image}
           imgixParams={{ w: 600, h: 400, q: 90 }}
+          alt=""
         />
       )}
       {slice.variation === "banner" && (
         <PrismicNextImage
           field={slice.primary.image}
           imgixParams={{ w: 600, h: 200, q: 90, fit: "crop", ar: "16:9" }}
+          alt=""
         />
       )}
     </>
