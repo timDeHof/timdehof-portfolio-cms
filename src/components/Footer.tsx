@@ -5,8 +5,6 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import Bounded from "@/components/Bounded";
 import { ColorField, Content, isFilled } from "@prismicio/client";
-import link from "next/link";
-import { color, label } from "three/examples/jsm/nodes/Nodes.js";
 
 type socialLinkProps = {
   link: Content.SettingsDocumentDataSocialLinksItem["link"];
@@ -70,7 +68,7 @@ export default async function Footer() {
             ({ link, icon, label, bgcolor }: socialLinkProps, index) => (
               <span
                 key={index}
-                className="flex h-10 w-10 items-center justify-center rounded-full p-2 duration-150 hover:scale-125"
+                className="flex size-10 items-center justify-center rounded-full p-2 duration-150 hover:scale-125"
                 style={{
                   backgroundColor: isFilled.color(bgcolor)
                     ? bgcolor

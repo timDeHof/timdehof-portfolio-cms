@@ -15,7 +15,7 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for contact_form (variation: {slice.variation})
+      <div>Hello Contact form</div>
       Slices
     </Bounded>
   );

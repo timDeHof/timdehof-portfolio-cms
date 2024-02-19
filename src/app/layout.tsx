@@ -30,7 +30,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-slate-900 text-slate-100">
-      <body className={clsx(urbanist.variable, "relative min-h-screen")}>
+      <body
+        className={clsx(urbanist.variable, "relative min-h-screen bg-inherit")}
+      >
         <Header />
         {children}
         <Footer />

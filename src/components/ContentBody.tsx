@@ -7,8 +7,6 @@ import Button from "@/components/Button";
 import { Content, DateField, GroupField, isFilled } from "@prismicio/client";
 import { Simplify } from "../../prismicio-types";
 
-type Page = { uid: string };
-
 export default function ContentBody({
   page,
   links,

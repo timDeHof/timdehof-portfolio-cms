@@ -14,7 +14,7 @@ export default function Avatar({ image, className }: AvatarProps) {
   const component = useRef(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       gsap.fromTo(
         ".avatar",
         { opacity: 0, scale: 1.4 },
@@ -28,11 +28,11 @@ export default function Avatar({ image, className }: AvatarProps) {
         ).getBoundingClientRect();
         const componentCenterX = componentRect.left + componentRect.width / 2;
 
-        let componentPercent = {
+        const componentPercent = {
           x: (e.clientX - componentCenterX) / componentRect.width / 2,
         };
 
-        let distFromCenterX = 1 - Math.abs(componentPercent.x);
+        const distFromCenterX = 1 - Math.abs(componentPercent.x);
 
         gsap
           .timeline({
@@ -60,14 +60,14 @@ export default function Avatar({ image, className }: AvatarProps) {
     return () => ctx.revert();
   }, []);
   return (
-    <div ref={component} className={clsx("relative h-full w-full", className)}>
+    <div ref={component} className={clsx("relative size-full", className)}>
       <div
         className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-slate-700 opacity-0"
         style={{ perspective: "500px", perspectiveOrigin: "150% 150%" }}
       >
         <PrismicNextImage
           field={image}
-          className="avatar-image h-full w-full object-fill"
+          className="avatar-image size-full object-fill"
           imgixParams={{ q: 90 }}
           alt=""
         />

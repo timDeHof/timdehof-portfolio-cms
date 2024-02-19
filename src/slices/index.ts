@@ -7,6 +7,7 @@ export const components = {
   contact_form: dynamic(() => import("./ContactForm")),
   content_index: dynamic(() => import("./ContentIndex")),
   experience: dynamic(() => import("./Experience")),
+  form: dynamic(() => import("./Form")),
   hero: dynamic(() => import("./Hero")),
   image_block: dynamic(() => import("./ImageBlock")),
   tech_list: dynamic(() => import("./TechList")),

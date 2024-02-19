@@ -17,7 +17,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   const component = useRef(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
       tl.fromTo(
@@ -84,7 +84,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         <Shapes />
         <div className="col-start-1 md:row-start-1">
           <h1
-            className="font-display mb-8 text-[clamp(2.5rem,18vmin,20rem)] font-extrabold leading-none tracking-tight"
+            className="font-display mb-8 text-[clamp(2.5rem,16vmin,20rem)] font-extrabold leading-none tracking-tight"
             aria-label={
               slice.primary.first_name + " " + slice.primary.last_name
             }
@@ -92,7 +92,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             <span className="block text-slate-300">
               {renderLetters(slice.primary.first_name, "fn")}
             </span>
-            <span className="-mt-[.2em] block text-slate-500">
+            <span className="mt-[-.2em] block text-slate-500">
               {renderLetters(slice.primary.last_name, "ln")}
             </span>
           </h1>
