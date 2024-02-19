@@ -7,8 +7,20 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "slicemachine": "start-slicemachine",
+    "format": "npx prettier --write",
     "email": "email dev --dir src/components/emails"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "eslint",
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@prismicio/client": "^7.3.1",
